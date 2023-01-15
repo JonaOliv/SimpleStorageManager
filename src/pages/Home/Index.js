@@ -6,7 +6,13 @@ class Home extends Component {
     return (
       <div>
         <NavigatorBar/>
-        <img src={process.env.PUBLIC_URL + '/img/index.jpeg'} className='img-fluid shadow-4' alt='...' />
+        <img src={process.env.PUBLIC_URL + '/img/desk-table-workspace-office-living-room-furniture-944600-pxhere.com.jpg'} 
+        className='img-fluid shadow-4' alt='...' 
+        style={{
+          width: '100%',
+          height: '100%'
+        }}
+        />
       </div>
     );
   }
