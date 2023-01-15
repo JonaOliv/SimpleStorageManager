@@ -1,0 +1,19 @@
+.JO-navbar {
+    background-color: wheat;
+    padding: 0;
+}
+
+.JO-navbar-home {
+    padding-right: 2em;
+}
+
+.JO-navbar-button {
+    display: inline-block;
+    text-align: center;
+    width: 7.5em;
+    color: black;
+}
+
+.JO-navbar-button:hover {
+    background-color: darkgoldenrod;
+}
