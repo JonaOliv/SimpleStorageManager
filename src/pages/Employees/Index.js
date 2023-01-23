@@ -5,18 +5,15 @@ import HeaderTemplate from './components/HeaderTemplate';
 import BodyTemplate from './components/BodyTemplate';
 import TableBar from './components/TableBar';
 
-import { Component } from 'react';
-
-class Employees extends Component {
-  render(){
-    return (
-      <div>
-        <NavigatorBar/>
-        <TableBar/>
-        <TableTemplate header={<HeaderTemplate/>} body={<BodyTemplate/>}/>          
-      </div>
-    );
-  }
+function Employees(props){
+  return (
+    <div>
+      <NavigatorBar currentPageNavbar={props.currentPageNavbar}/>
+      <TableBar/>
+      <TableTemplate header={<HeaderTemplate/>} body={<BodyTemplate/>}/>          
+    </div>
+  );
 }
+
   
 export default Employees;

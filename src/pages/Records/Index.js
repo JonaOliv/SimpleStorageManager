@@ -10,7 +10,11 @@ import ModalTemplate from '../../components/ModalTemplate'
 import FormModal from './components/FormModal'
 import Button from 'react-bootstrap/Button';
 
-function Records() {
+import DataTable from 'react-data-table-component';
+import getColumns from "./hooks/getColumns";
+import getRecords from "../../api/axios/record";
+
+function Records(props) {
   const [show, setShow] = useState(false);
 
   const [modalTitle, setModalTitle] = useState("");
@@ -21,19 +25,31 @@ function Records() {
     setShow(true);
   };
 
-  const product = { 
-    "idRecord":"125453345", "idEmployee":"25252525","nameEmployee":"John Hammer", 
-    "idProduct":"75757575", "nameProduct":"Llave Inglesa", "inOrOut": "out", 
-    "datetime":"2022/12/10 09:22:55", "description":"hello world!"
-  };
-
+  const product = {};
   const disabled = "disabled";
+
+  const title = "Records";
+  const columns = getColumns(handleShow);
+  const data = getRecords(0);
+  const ExpandedComponent = ({ data }) => <p>{data.description}</p>;
 
   return (
     <div>
-      <NavigatorBar/>
+      <NavigatorBar currentPageNavbar={props.currentPageNavbar}/>
       <TableBar/>
-      <TableTemplate header={<HeaderTemplate/>} body={<BodyTemplate handleShow={handleShow}/>}/> 
+      <DataTable 
+        title={title}
+        columns={columns}
+        data={data}
+        expandableRows
+        expandableRowExpanded={row => row.description}
+        expandableRowsComponent={ExpandedComponent}
+        expandOnRowClicked
+        expandOnRowDoubleClicked
+        expandableRowsHideExpander
+        pagination
+      />
+
       <ModalTemplate show={show} handleClose={handleClose} handleShow={handleShow} 
         body={<FormModal disabled={disabled}>{product}</FormModal>} title={modalTitle} 
         footer={<Button variant="primary" onClick={handleClose}>Close</Button>}

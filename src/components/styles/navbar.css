@@ -16,4 +16,10 @@
 
 .JO-navbar-button:hover {
     background-color: darkgoldenrod;
+    color: white;
+}
+
+.JO-navbar-button-toggled {
+    background-color: darkgoldenrod;
+    color: white;
 }

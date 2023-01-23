@@ -10,19 +10,20 @@ import ModalTemplate from '../../components/ModalTemplate'
 import FormModal from './components/FormModal'
 import Button from 'react-bootstrap/Button';
 
-function Inventory(){
+function Inventory(props){
   const [show, setShow] = useState(false);
 
   const [modalTitle, setModalTitle] = useState("");
 
   const handleClose = () => setShow(false);
+
   const handleShow = (event) => {
-    setModalTitle("Updating Product: " + event.target.id);
     setShow(true);
   };
 
   const handleShowUpdate = (event) => {
     handleShow(event);
+    setModalTitle("Updating Product: " + event.target.id);
   };
 
   const handleShowDelete = (event) => {
@@ -39,12 +40,17 @@ function Inventory(){
 
   return (
     <div>
-      <NavigatorBar/>
+      <NavigatorBar currentPageNavbar={props.currentPageNavbar}/>
       <TableBar/>
       <TableTemplate header={<HeaderTemplate/>} body={<BodyTemplate handleShowUpdate={handleShowUpdate} handleShowDelete={handleShowDelete}/>}/> 
       <ModalTemplate show={show} handleClose={handleClose} handleShow={handleShow} 
         body={<FormModal disabled={disabled}>{product}</FormModal>} title={modalTitle} 
-        footer={<Button variant="primary" onClick={handleClose}>Close</Button>}
+        footer={
+          <div>
+            <Button variant="primary" onClick={handleClose}>Submit</Button>
+            <Button variant="default" onClick={handleClose}>Cancel</Button>
+          </div>
+        }
       />         
     </div>
   );

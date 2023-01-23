@@ -14,9 +14,9 @@ function RoutesNavbar(){
             <Route path="/" element={<Home />} />
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/employees" element={<Employees />} />
-            <Route path="/inventory" element={<Inventory />} />
-            <Route path="/records" element={<Records />} />
+            <Route path="/employees" element={<Employees currentPageNavbar={1}/>} />
+            <Route path="/inventory" element={<Inventory currentPageNavbar={2}/>} />
+            <Route path="/records" element={<Records currentPageNavbar={3}/>} />
             <Route path="*" element={<NoPage />} />
         </Routes>
         </BrowserRouter>
