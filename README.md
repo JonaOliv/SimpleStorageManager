@@ -8,3 +8,4 @@ Simple structure project for the management of office resources in a department.
 npm install
 npm start
 ```
+![Screenshots](public/gifforgithub.gif?raw=true)
